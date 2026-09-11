@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdul Zainos — Cloud and Infrastructure</title>
+<meta name="description" content="Portfolio of Abdul Zainos, a cloud and network engineering student on the AWS track in Reno, NV. Headless Linux lab write-ups, working notes, and seven years of technical project management. Available for junior cloud operations and infrastructure roles.">
+<meta name="color-scheme" content="light dark">
+<script>
+(function(){var t;try{t=localStorage.getItem("az-theme")}catch(e){}
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t)})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceef0;--panel:#f4f5f6;--ink:#16181b;--ink-rgb:22,24,27;--code-bg:#e0e3e6;--accent:oklch(0.55 0.19 25);--accent-soft:oklch(0.55 0.19 25 / .45);--on-accent:#f4f5f6}
+[data-theme="dark"]{--bg:#131313;--panel:#1c1c1c;--ink:#e9e8e4;--ink-rgb:233,232,228;--code-bg:#131313;--accent:oklch(0.7 0.17 25);--accent-soft:oklch(0.7 0.17 25 / .45);--on-accent:#131313}
+html{background:var(--bg);color-scheme:light}
+[data-theme="dark"]{color-scheme:dark}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}
+button{font-family:inherit}
+*{box-sizing:border-box}
+@keyframes omLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+@keyframes omRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+[data-cards]>*{animation:omRise .55s cubic-bezier(.2,.7,.3,1) both}
+[data-cards]>*:nth-child(2){animation-delay:80ms}
+[data-cards]>*:nth-child(3){animation-delay:160ms}
+[data-cards]>*:nth-child(4){animation-delay:240ms}
+[data-reveal]{opacity:0;transform:translateY(18px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+[data-stagger]>*{opacity:0;transform:translateY(14px)}
+[data-stagger].is-in>*{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
+[data-stagger].is-in>*:nth-child(2){transition-delay:70ms}
+[data-stagger].is-in>*:nth-child(3){transition-delay:140ms}
+[data-stagger].is-in>*:nth-child(4){transition-delay:210ms}
+[data-stagger].is-in>*:nth-child(5){transition-delay:280ms}
+[data-stagger].is-in>*:nth-child(6){transition-delay:350ms}
+[data-lift]{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s ease,color .2s ease,background-color .2s ease}
+[data-lift]:hover{transform:translateY(-2px)}
+[data-arrow] span:last-child,[data-arrow-r] span:last-child{transition:transform .24s cubic-bezier(.2,.7,.3,1)}
+[data-arrow]:hover span:last-child{transform:translate(3px,-3px)}
+[data-arrow-r]:hover span:last-child{transform:translateX(5px)}
+@media (prefers-reduced-motion:reduce){[data-reveal],[data-stagger]>*{opacity:1!important;transform:none!important}[data-lift]:hover{transform:none}*{animation:none!important}}
+[hidden]{display:none!important}
+[data-nav]{color:rgba(var(--ink-rgb),.72)}
+[data-nav].is-active{color:var(--accent)}
+.u-hover-accent:hover{border-color:var(--accent)!important;color:var(--accent)!important}
+.u-hover-soft:hover{border-color:var(--accent-soft)!important}
+.u-hover-tint:hover{background:rgba(var(--ink-rgb),.04)}
+.u-hover-li:hover{border-color:#0A66C2!important;color:#0A66C2!important}
+.u-hover-gh:hover{border-color:#6E5494!important;color:#6E5494!important}
+[data-placeholder]{cursor:default}
+[data-placeholder]:hover{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}</style>
+</head>
+<body>
+<div style="display:flex;flex-direction:column;min-height:100vh;background:var(--bg)">
+
+<div style="position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid rgba(var(--ink-rgb),.28)">
+<div style="max-width:1140px;margin:0 auto;padding:13px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase">
+<a href="#index" style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:var(--accent);display:block;flex:none"></span><span>ABDUL ZAINOS — CLOUD / INFRASTRUCTURE</span></a>
+<div style="display:flex;align-items:center;gap:26px">
+<a href="#index" data-nav="index">Index</a>
+<a href="#work" data-nav="work">Work</a>
+<a href="#notes" data-nav="notes">Notes</a>
+<a href="#contact" data-nav="contact">Contact</a>
+<button type="button" data-theme-toggle aria-label="Toggle colour theme" style="cursor:pointer;background:none;border:1px solid rgba(var(--ink-rgb),.35);color:inherit;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;display:flex;align-items:center;gap:8px" class="u-hover-accent">
+<span data-theme-icon="light" style="display:flex"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="display:block;flex:none"><path d="M13.2 9.9A5.6 5.6 0 0 1 6.1 2.8 5.6 5.6 0 1 0 13.2 9.9Z"></path></svg></span>
+<span data-theme-icon="dark" hidden style="display:flex"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="display:block;flex:none"><circle cx="8" cy="8" r="3.1"></circle><path d="M8 1v1.8M8 13.2V15M1 8h1.8M13.2 8H15M3.05 3.05l1.27 1.27M11.68 11.68l1.27 1.27M12.95 3.05l-1.27 1.27M4.32 11.68l-1.27 1.27"></path></svg></span>
+<span data-theme-label>Dark</span>
+</button>
+</div>
+</div>
+</div>
+
+<div style="flex:0 0 auto">
+
+<section data-page="index" hidden>
+<div style="position: relative">
+<div style="max-width:1140px;margin:0 auto;padding:40px 32px 36px">
+<div style="animation:omRise .5s cubic-bezier(.2,.7,.3,1) both;border:1px solid rgba(var(--ink-rgb),.32);position:relative;padding:56px 44px 44px;background:var(--panel)">
+<div style="position:absolute;top:-1px;left:-1px;width:11px;height:11px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)"></div>
+<div style="position:absolute;top:-1px;right:-1px;width:11px;height:11px;border-top:2px solid var(--accent);border-right:2px solid var(--accent)"></div>
+<div style="position:absolute;bottom:-1px;left:-1px;width:11px;height:11px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent)"></div>
+<div style="position:absolute;bottom:-1px;right:-1px;width:11px;height:11px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)"></div>
+<div style="animation:omRise .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:0ms;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">Available for hire — Reno, NV / Remote</div>
+
+<div style="display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start">
+<div style="flex:1 1 460px;min-width:0">
+<h1 style="animation:omRise .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:70ms;margin:0;font-weight:700;font-size:clamp(40px,6.6vw,80px);line-height:.96;letter-spacing:-.042em;text-transform:uppercase">Build it.<br>Run it.<br>Document it.</h1>
+<p style="animation:omRise .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:140ms;margin:32px 0 0;max-width:50ch;font-size:17px;line-height:1.66;color:rgba(var(--ink-rgb),.8)">I spent seven years running technical projects and distributed engineering teams before deciding I wanted to build the infrastructure instead of scheduling it. Now I am finishing a cloud and network engineering degree on the AWS track, running my own Linux lab, and putting the work in public as I go. Looking for a first cloud operations or infrastructure role.</p>
+<div style="animation:omRise .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:210ms;display:flex;gap:10px;flex-wrap:wrap;margin-top:28px"><a href="#work" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;background:var(--accent);color:var(--on-accent);font-weight:700" data-lift="">View work →</a><a href="mailto:hire@abdulzainos.com" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid rgba(var(--ink-rgb),.45)" data-lift="">Email me</a></div>
+</div>
+
+<div style="animation:omRise .55s cubic-bezier(.2,.7,.3,1) both;animation-delay:280ms;flex:0 1 320px;min-width:260px;background:var(--bg);border:1px solid rgba(var(--ink-rgb),.3);border-top:3px solid var(--ink);padding:20px 20px 14px;align-self:flex-start;font-family:'Space Mono',monospace;font-size:12.5px">
+<div style="display:flex;justify-content:space-between;letter-spacing:.1em;text-transform:uppercase;font-size:11px;color:rgba(var(--ink-rgb),.75);padding-bottom:12px;border-bottom:1px solid rgba(var(--ink-rgb),.3)"><span>Credentials</span><span>Rev. 2026.09</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="min-width:0">B.S. Cloud &amp; Network Engineering</span><span style="color:rgba(var(--ink-rgb),.75);flex:none">WGU · In progress</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="min-width:0">Linux Foundations</span><span style="color:rgba(var(--ink-rgb),.75);flex:none">LPI · 2026</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="min-width:0">ITIL 4 Foundations</span><span style="color:rgba(var(--ink-rgb),.75);flex:none">ITIL · 2026</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="min-width:0">A+</span><span style="color:rgba(var(--ink-rgb),.75);flex:none">CompTIA · 2026</span></div>
+
+<div style="height:8px;margin:14px -20px -14px;background:repeating-linear-gradient(-45deg,var(--panel) 0 6px,rgba(var(--ink-rgb),.22) 6px 7px)"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1140px;margin:0 auto;padding:0 32px 88px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:76px"><span>02 — Selected work</span><a href="#work">All projects →</a></div>
+<div data-stagger="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px">
+
+<div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
+<div style="flex:0 0 44px;font-family:'Space Mono',monospace;font-size:12px;color:var(--accent)">001</div>
+<div style="flex:1 1 300px;min-width:0"><a href="#project" data-arrow-r="" style="display:flex;align-items:baseline;gap:9px;font-size:24px;font-weight:500;letter-spacing:-.026em"><span style="min-width:0">Headless Linux lab</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;color:rgba(var(--ink-rgb),.6)">→</span></a><p style="margin:7px 0 0;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.78);max-width:48ch">A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. Administered entirely over SSH, so nothing resets when I close the tab.</p></div>
+<div style="flex:0 1 200px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.85;color:rgba(var(--ink-rgb),.75);text-transform:uppercase">Linux / CLI / SSH / Headless</div>
+<div style="flex:0 0 152px;margin-left:auto;display:flex;flex-direction:column;gap:7px;font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em">
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<div style="background:var(--panel);border-top:1px solid rgba(var(--ink-rgb),.3);border-bottom:1px solid rgba(var(--ink-rgb),.3);color:var(--ink);margin-top:52px">
+<div style="max-width:1140px;margin:0 auto;padding:78px 32px 82px;display:flex;justify-content:center">
+<div data-reveal="" style="width:100%;border:1px solid rgba(var(--ink-rgb),.3);position:relative;padding:44px 44px 48px">
+<div style="position:absolute;top:-1px;left:-1px;width:11px;height:11px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)"></div>
+<div style="position:absolute;top:-1px;right:-1px;width:11px;height:11px;border-top:2px solid var(--accent);border-right:2px solid var(--accent)"></div>
+<div style="position:absolute;bottom:-1px;left:-1px;width:11px;height:11px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent)"></div>
+<div style="position:absolute;bottom:-1px;right:-1px;width:11px;height:11px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)"></div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)">03 — About</div>
+<div style="height:1px;background:rgba(var(--ink-rgb),.3);margin:16px 0 28px"></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px 56px;font-size:18px;line-height:1.68;letter-spacing:-.008em;color:var(--ink);text-wrap:pretty">
+<div>
+<p style="margin:0 0 18px">I came to infrastructure sideways. I started as a web designer, ended up running a small agency, and spent most of a decade as the person responsible for whether a distributed engineering team actually shipped. I have managed thirteen developers across time zones, run an operations program that cut a 90-day cycle by a third, and migrated a client's entire storefront from one platform to another without losing a day of sales.</p>
+<p style="margin:0">The parts I liked best were never the schedule. They were the environments, the deploys, and the things that were slow because nobody had automated them yet.</p>
+</div>
+<div>
+<p style="margin:0 0 18px">So I went back for it. I am finishing a B.S. in Cloud and Network Engineering on the AWS track and running a lab at home to make the coursework stick. Every project on this page is something I set up, took apart, and set up again to understand what I got wrong the first time.</p>
+<p style="margin:0;color:rgba(var(--ink-rgb),.8)">I am looking for a junior cloud operations, infrastructure, or platform role where I can learn from people who have run production systems. I am bilingual in English and Spanish, comfortable being the person who asks the obvious question, and I write things down. If your team has a backlog of small automation nobody has had time for, that is the work I want.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1140px;margin:0 auto;padding:0 32px 40px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px">04 — Experience</div>
+<div data-stagger="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px">
+
+<div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
+<div style="flex:0 0 118px;font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:18px">
+
+<div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">May</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2026</div>
+<div style="width:1px;height:14px;background:rgba(var(--ink-rgb),.4);margin:7px 0 7px 1px"></div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">May</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2018</div>
+</div>
+
+</div>
+<div style="flex:1 1 320px;min-width:0">
+<div style="font-size:24px;font-weight:500;letter-spacing:-.026em">Technical Project Manager</div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">XAICODE · Remote</div>
+<div style="margin-top:11px;border-top:1px solid rgba(var(--ink-rgb),.16)">
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">01</span><span>Managed distributed development teams delivering client web and commerce projects.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">02</span><span>Led a full WordPress to Shopify migration covering data, catalog, and storefront operations.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">03</span><span>Grew from design into architecture and consulting across the life of the business.</span></div>
+
+</div>
+</div>
+<div style="flex:0 1 200px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.85;color:rgba(var(--ink-rgb),.75);text-transform:uppercase">Team leadership / Architecture / Vendor mgmt</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
+<div style="flex:0 0 118px;font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:18px">
+
+<div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Nov</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2022</div>
+<div style="width:1px;height:14px;background:rgba(var(--ink-rgb),.4);margin:7px 0 7px 1px"></div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Mar</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2022</div>
+</div>
+
+</div>
+<div style="flex:1 1 320px;min-width:0">
+<div style="font-size:24px;font-weight:500;letter-spacing:-.026em">Technical Project Manager</div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">HitPiece, REMOTE</div>
+<div style="margin-top:11px;border-top:1px solid rgba(var(--ink-rgb),.16)">
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">01</span><span>Ran agile delivery for a global team of 13 developers on a blockchain marketplace platform.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">02</span><span>Owned sprint planning and release coordination across time zones.</span></div>
+
+</div>
+</div>
+<div style="flex:0 1 200px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.85;color:rgba(var(--ink-rgb),.75);text-transform:uppercase">Agile / Release coordination / Distributed teams</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
+<div style="flex:0 0 118px;font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:18px">
+
+<div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Jun</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2018</div>
+<div style="width:1px;height:14px;background:rgba(var(--ink-rgb),.4);margin:7px 0 7px 1px"></div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Oct</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2017</div>
+</div>
+
+</div>
+<div style="flex:1 1 320px;min-width:0">
+<div style="font-size:24px;font-weight:500;letter-spacing:-.026em">Operations Program Manager</div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">ISDI Digital University, San Jose CA</div>
+<div style="margin-top:11px;border-top:1px solid rgba(var(--ink-rgb),.16)">
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">01</span><span>Delivered a 33% productivity gain across operations in 90 days.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">02</span><span>Documented and standardized processes so they could run without me.</span></div>
+
+</div>
+</div>
+<div style="flex:0 1 200px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.85;color:rgba(var(--ink-rgb),.75);text-transform:uppercase">Process / Documentation / Operations</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
+<div style="flex:0 0 118px;font-family:'Space Mono',monospace;display:flex;flex-direction:column;gap:18px">
+
+<div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Dec</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2018</div>
+<div style="width:1px;height:14px;background:rgba(var(--ink-rgb),.4);margin:7px 0 7px 1px"></div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Jul</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2018</div>
+</div>
+
+<div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Oct</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2017</div>
+<div style="width:1px;height:14px;background:rgba(var(--ink-rgb),.4);margin:7px 0 7px 1px"></div>
+<div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Jul</div>
+<div style="font-size:17px;line-height:1.15;color:var(--ink)">2017</div>
+</div>
+
+</div>
+<div style="flex:1 1 320px;min-width:0">
+<div style="font-size:24px;font-weight:500;letter-spacing:-.026em">IT Support &amp; Web Developer</div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">Credo Technology Group · Sparks, NV</div>
+<div style="margin-top:11px;border-top:1px solid rgba(var(--ink-rgb),.16)">
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">01</span><span>Worked help desk and on-site support for small business clients across a managed services book.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">02</span><span>Moved into WordPress development, hosting, and site maintenance for client accounts.</span></div>
+
+<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(var(--ink-rgb),.12);font-size:15px;line-height:1.55;color:rgba(var(--ink-rgb),.78);max-width:60ch"><span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.6);padding-top:3px;flex:none">03</span><span>Rehired after a program management role ended, returning to the same team.</span></div>
+
+</div>
+</div>
+<div style="flex:0 1 200px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.85;color:rgba(var(--ink-rgb),.75);text-transform:uppercase">MSP / IT support / WordPress / Hosting</div>
+</div>
+
+</div>
+</div>
+
+<div style="max-width:1140px;margin:0 auto;padding:0 32px 88px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px"><span>05 — Education</span><span>14 of 42 courses · 33%</span></div>
+<div data-reveal="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px;padding-top:28px">
+
+<div style="display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between">
+<div style="flex:1 1 340px;min-width:0">
+<div style="font-size:clamp(24px,3.2vw,34px);font-weight:500;letter-spacing:-.028em;line-height:1.12">B.S. Cloud and Network Engineering</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:9px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)"><span style="color:var(--accent)">AWS track</span><span>Western Governors University</span><span>Expected 2028</span></div>
+</div>
+<div style="flex:0 1 300px;min-width:240px;font-family:'Space Mono',monospace">
+<div style="display:flex;align-items:flex-end;gap:2px;height:34px">
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;background:var(--accent);display:block"></span>
+
+
+<span style="flex:1 1 0;min-width:2px;height:34px;display:block;background:repeating-linear-gradient(-45deg,var(--accent) 0 2px,transparent 2px 4px)"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:34px;display:block;background:repeating-linear-gradient(-45deg,var(--accent) 0 2px,transparent 2px 4px)"></span>
+
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+<span style="flex:1 1 0;min-width:2px;height:16px;background:rgba(var(--ink-rgb),.26);display:block"></span>
+
+</div>
+<div style="display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)"><span>Unit 01</span><span>33% complete</span><span>Unit 42</span></div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:1px;background:rgba(var(--ink-rgb),.28);border:1px solid rgba(var(--ink-rgb),.28);margin-top:34px;font-family:'Space Mono',monospace">
+<div style="background:var(--panel);padding:16px 18px"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)">Passed</div><div style="font-size:26px;line-height:1.1;margin-top:6px">14</div></div>
+<div style="background:var(--panel);padding:16px 18px"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">In progress</div><div style="font-size:26px;line-height:1.1;margin-top:6px;color:var(--accent)">02</div></div>
+<div style="background:var(--panel);padding:16px 18px"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)">Remaining</div><div style="font-size:26px;line-height:1.1;margin-top:6px;color:rgba(var(--ink-rgb),.68)">26</div></div>
+<div style="background:var(--panel);padding:16px 18px"><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)">Total courses</div><div style="font-size:26px;line-height:1.1;margin-top:6px">42</div></div>
+</div>
+
+<div style="margin-top:42px">
+<div style="display:flex;align-items:baseline;gap:14px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase"><span style="width:9px;height:9px;background:var(--accent);display:block;flex:none"></span><span>Passed</span><span style="flex:1 1 auto;height:1px;background:rgba(var(--ink-rgb),.28)"></span><span style="color:rgba(var(--ink-rgb),.72)">14 courses</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));column-gap:48px;margin-top:8px">
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">01</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Introduction to Geography</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C255</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">02</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">English Composition I</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C455</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">03</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">World History: Diverse Cultures and Global Connections</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D266</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">04</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Orientation</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">ORA1</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">05</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Introduction to IT</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C182</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">06</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">IT Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C393</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">07</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Critical Thinking and Logic</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C168</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">08</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">English Composition II</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C456</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">09</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Organizational Behavior</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C715</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">10</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Fundamentals for Success in Business</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D072</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">11</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Applied Algebra</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C957</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">12</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Applied Probability and Statistics</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">C955</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">13</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Business of IT - Applications</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D336</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.5);width:20px">14</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.9)">Ethics in Technology</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D333</span></div>
+
+</div>
+</div>
+
+<div style="margin-top:38px;border-left:2px solid var(--accent);padding-left:18px">
+<div style="display:flex;align-items:baseline;gap:14px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)"><span>In progress</span><span style="flex:1 1 auto;height:1px;background:var(--accent-soft)"></span><span>02 courses</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));column-gap:48px;margin-top:8px">
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);width:20px">15</span><span style="flex:1 1 auto;min-width:0;font-size:16px;font-weight:500;line-height:1.4">Linux Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D281</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.26)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);width:20px">16</span><span style="flex:1 1 auto;min-width:0;font-size:16px;font-weight:500;line-height:1.4">IT Applications</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.72)">D317</span></div>
+
+</div>
+</div>
+
+<div style="margin-top:38px">
+<div style="display:flex;align-items:baseline;gap:14px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)"><span style="width:9px;height:9px;border:1px solid rgba(var(--ink-rgb),.5);display:block;flex:none"></span><span>Remaining</span><span style="flex:1 1 auto;height:1px;background:rgba(var(--ink-rgb),.28)"></span><span>26 courses</span></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));column-gap:48px;margin-top:8px">
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">17</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Technical Communication</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D339</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">18</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Integrated Physical Sciences</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">C165</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">19</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Health, Fitness, and Wellness</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">C458</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">20</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Network and Security - Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D315</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">21</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Networks</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D325</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">22</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Network Analytics and Troubleshooting</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D412</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">23</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Telecomm and Wireless Communications</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D413</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">24</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Version Control</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D197</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">25</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Foundations of Programming (Python)</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E010</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">26</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Python for IT Automation</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D522</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">27</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Software Defined Networking</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D415</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">28</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">US History: Stories of American Democracy</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D267</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">29</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Data Management - Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D426</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">30</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Network and Security - Applications</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D329</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">31</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Cloud and Network Security Models</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E025</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">32</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">AI for IT Automation and Security</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E026</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">33</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Cloud Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D282</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">34</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Virtualization and IaaS</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E027</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">35</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Internet of Things (IoT) and Infrastructure</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D337</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">36</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">AWS Cloud Architecture</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D319</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">37</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Hybrid Cloud Infrastructure and Orchestration</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E028</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">38</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Cloud Deployment and Operations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D341</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">39</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Introduction to Systems Thinking and Applications</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D459</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">40</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">Influential Communication through Visual Design and Storytelling</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D246</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">41</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">IT Leadership Foundations</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">D370</span></div>
+
+<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.2)"><span style="flex:none;font-family:'Space Mono',monospace;font-size:11px;color:rgba(var(--ink-rgb),.45);width:20px">42</span><span style="flex:1 1 auto;min-width:0;font-size:14.5px;line-height:1.4;color:rgba(var(--ink-rgb),.68)">BSCNE-AWS Capstone Project</span><span style="flex:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(var(--ink-rgb),.6)">E030</span></div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section data-page="work" hidden>
+<div style="max-width:1140px;margin:0 auto;padding:64px 32px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:18px">Work — 01 project</div>
+<h2 style="margin:0 0 14px;font-size:clamp(34px,5vw,54px);font-weight:700;letter-spacing:-.038em;text-transform:uppercase;line-height:1">Everything I've built</h2>
+<p style="margin:0 0 36px;max-width:58ch;font-size:17px;line-height:1.66;color:rgba(var(--ink-rgb),.8)">The environment I study and build in, written up the way I’d want to read it: what the problem was, what I put in place, and what I got wrong first.</p>
+<div data-cards="" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),344px));gap:22px">
+
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);display:flex;flex-direction:column;transition:border-color .2s ease" class="u-hover-soft">
+<a href="#project" style="height:180px;background:#f1efe8;border-bottom:1px solid rgba(var(--ink-rgb),.3);display:flex;align-items:center;justify-content:center;padding:14px"><img src="lab-topology.svg" alt="Lab topology diagram" style="display:block;width:100%;height:100%;object-fit:contain"></a>
+<div style="padding:20px;display:flex;flex-direction:column;flex:1">
+<div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:10px"><span>001</span><span>Ongoing</span></div>
+<a href="#project" style="font-size:25px;font-weight:500;letter-spacing:-.026em;line-height:1.15;display:block">Headless Linux lab</a>
+<p style="margin:9px 0 18px;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.78)">A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. Administered entirely over SSH, so nothing resets when I close the tab.</p>
+<div style="margin-top:auto;border-top:1px solid rgba(var(--ink-rgb),.2);padding-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em">
+
+
+<a href="#project" style="margin-left:auto;color:rgba(var(--ink-rgb),.75)">Detail →</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section data-page="project" hidden>
+<div style="max-width:1140px;margin:0 auto;padding:52px 32px 96px">
+<a href="#work" style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">← All work</a>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;margin-top:26px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)"><span style="color:var(--accent)">001</span><span>Ongoing</span><span>2026</span></div>
+<h2 style="margin:12px 0 0;font-size:clamp(32px,4.6vw,52px);font-weight:700;letter-spacing:-.038em;line-height:1.02;max-width:18ch">Headless Linux lab</h2>
+<p style="margin:20px 0 32px;max-width:60ch;font-size:17.5px;line-height:1.68;color:rgba(var(--ink-rgb),.82)">A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. Administered entirely over SSH, so nothing resets when I close the tab.</p>
+
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:#f1efe8;height:380px;display:flex;align-items:center;justify-content:center;padding:28px;margin-bottom:36px"><img src="lab-topology.svg" alt="Lab topology diagram" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+
+<div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;padding-bottom:20px">
+<div style="flex:1 1 400px;min-width:0">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">The problem</div>
+<p style="margin:0 0 30px;font-size:17px;line-height:1.7;color:rgba(var(--ink-rgb),.85)">I&#x27;m working through the LPI Linux Essentials material, and the browser labs it ships with expire after 30 minutes. Everything I did was gone when the timer ran out. Fine for a single exercise, useless for anything I wanted to build on. I wanted an environment that stuck around, and one I could break on purpose without losing my work.</p>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">What I built</div>
+<p style="margin:0 0 18px;font-size:17px;line-height:1.7;color:rgba(var(--ink-rgb),.85)">A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. I administer all of it over SSH from my iMac. No monitor on the host, no desktop on the guests.</p>
+<div style="border-top:1px solid rgba(var(--ink-rgb),.2);margin-bottom:30px">
+
+<div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(var(--ink-rgb),.14);font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.82)"><span style="font-family:'Space Mono',monospace;font-size:11.5px;color:var(--accent);padding-top:4px;flex:none">01</span><span>The host runs with no display attached. I reach it over the network or not at all.</span></div>
+
+<div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(var(--ink-rgb),.14);font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.82)"><span style="font-family:'Space Mono',monospace;font-size:11.5px;color:var(--accent);padding-top:4px;flex:none">02</span><span>I create and destroy Ubuntu VMs through Multipass, so breaking one costs me a rebuild instead of an afternoon.</span></div>
+
+<div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(var(--ink-rgb),.14);font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.82)"><span style="font-family:'Space Mono',monospace;font-size:11.5px;color:var(--accent);padding-top:4px;flex:none">03</span><span>Key-based SSH with password authentication disabled, so a guessable password is not a way into the host.</span></div>
+
+</div>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">What I learned</div>
+<p style="margin:0 0 30px;font-size:17px;line-height:1.7;color:rgba(var(--ink-rgb),.85)">Most of the coursework has been command line: finding my way around the filesystem, archiving and compression with tar, shell scripting. Having a machine that keeps its state changed how I study. I can leave something half-configured, come back to it later, and pick up where I stopped. And when I break something badly enough that fixing it isn&#x27;t worth the time, I delete the instance and launch a new one.</p>
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">What's next</div>
+<p style="margin:0;font-size:17px;line-height:1.7;color:rgba(var(--ink-rgb),.85)">Finishing the shell scripting section, then moving my development work onto this machine and using it as the environment I actually build in, with deployment running from GitHub out to AWS.</p>
+</div>
+<div style="flex:1 1 250px;min-width:0;border:1px solid rgba(var(--ink-rgb),.28);background:var(--panel);padding:22px;position:sticky;top:82px">
+<div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:14px">Specification</div>
+<div style="font-family:'Space Mono',monospace;font-size:12.5px">
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="color:rgba(var(--ink-rgb),.75)">HOST</span><span style="text-align:right">Mac mini, headless</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="color:rgba(var(--ink-rgb),.75)">VMS</span><span style="text-align:right">Ubuntu via Multipass</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="color:rgba(var(--ink-rgb),.75)">ACCESS</span><span style="text-align:right">SSH, keys only</span></div>
+
+<div style="display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="color:rgba(var(--ink-rgb),.75)">INSTANCES</span><span style="text-align:right">3</span></div>
+
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
+
+
+</div>
+</div>
+</div>
+
+<div style="border-top:1px solid rgba(var(--ink-rgb),.3);padding:22px 0 8px;display:flex;justify-content:space-between;gap:20px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase">
+<a href="#work">← All work</a>
+</div>
+</div>
+</section>
+
+<section data-page="notes" hidden>
+<div style="max-width:1140px;margin:0 auto;padding:64px 32px 96px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:18px">Notes</div>
+<h2 style="margin:0 0 14px;font-size:clamp(34px,5vw,54px);font-weight:700;letter-spacing:-.038em;text-transform:uppercase;line-height:1">Working notes</h2>
+<p style="margin:0 0 36px;max-width:58ch;font-size:17px;line-height:1.66;color:rgba(var(--ink-rgb),.8)">Short write-ups of things I got wrong the first time. Mostly for me, published in case they save someone else an afternoon.</p>
+<div data-stagger="" style="border-top:1px solid rgba(var(--ink-rgb),.4)">
+
+<a href="#post" style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(var(--ink-rgb),.18); padding-left: 20px; padding-right: 20px; width: 100%" class="u-hover-tint">
+<div style="flex:0 0 102px;font-family:'Space Mono',monospace;font-size:12px;color:rgba(var(--ink-rgb),.75)">2026.09.10</div>
+<div style="flex:1 1 280px;min-width:0;max-width:76ch;margin:0 auto"><div style="font-size: 21px; font-weight: 500; letter-spacing: -.02em; text-transform: capitalize">I cached a login page: What troubleshooting taught me before AI could help</div><p style="margin:6px 0 0;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.78)">I turned on caching at three layers of a WordPress stack without understanding what any of them stored. A dashboard started serving one user&#x27;s information to the next. The fix took a day. Finding the words to search for took longer.</p></div>
+<div style="flex:0 0 auto;margin-left:auto;font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">5 min read</div>
+</a>
+
+</div>
+</div>
+</section>
+
+<section data-page="post" hidden>
+<div style="max-width:1140px;margin:0 auto;padding:52px 32px 96px">
+<a href="#notes" style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">← All notes</a>
+
+<div style="max-width:70ch;margin-top:28px">
+<div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)"><span style="color:var(--accent)">2026.09.10</span><span>5 min read</span><span>Caching</span></div>
+<h2 style="margin: 14px 0 0; font-size: clamp(30px,4.2vw,46px); font-weight: 700; letter-spacing: -.036em; line-height: 1.06; text-transform: capitalize">I cached a login page: What troubleshooting taught me before AI could help</h2>
+<p style="margin:20px 0 0;font-size:20px;line-height:1.6;color:rgba(var(--ink-rgb),.8);font-weight:400">I turned on caching at three layers of a WordPress stack without understanding what any of them stored. A dashboard started serving one user&#x27;s information to the next. The fix took a day. Finding the words to search for took longer.</p>
+<div style="height:1px;background:rgba(var(--ink-rgb),.3);margin:32px 0 34px"></div>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">A client escalated an issue on a site I built. The dashboard was caching logged-in information, which resulted in an exposure event.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">I was maybe one to two years into working solo at that point. A one-person development agency.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">What I had built</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">I had been taught to enable caching to speed up load times, and to me, caching just meant the website was gonna be faster. So I applied it everywhere I could find a toggle. Hummingbird from WPMU DEV at the plugin layer. Server caching on Cloudways. Cloudflare on top of that. Three layers, none of them coordinated, all of them on. Every blog I read treated caching like a vitamin. More is better; take it daily.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Those blogs were high-level. Anything detailed enough to actually be useful, I didn't have the patience to sit down and understand.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">What a cache actually does</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">What none of them made clear is that a cache stores whatever was rendered for a given URL and serves that same stored copy to everyone who requests it until the timer runs out. On a marketing page, that is the whole point. On an endpoint that renders differently depending on who is logged in, whatever was generated for the first visitor gets handed to everyone who loads that page after them.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">With Cloudflare, that's scoped by region too, so it depends on which edge location you hit. And because the plugin and the server were both caching the same requests on their own timers, the layers were fighting each other. Which copy you got came down to timing.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">Googling the symptom</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">I didn't know how to code. I had foundational CSS and HTML. I just don't know PHP or JavaScript. So when this broke, I did the only thing I knew how to do: Google it.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">I was literally googling "my caching has logged user information on a dashboard, and other people can see it."</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">That popped up all sorts of things. I went down all these rabbit holes.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">The search wasn't wrong. It described the symptom accurately. It just wasn't useful, because a symptom description finds other people who are equally lost. It doesn't find the fix.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">The words I didn't have</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">The two words I needed were cache exclusion. I didn't know they existed. Once you have them, the search takes thirty seconds. Without them, you can burn a day. Or three.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">That was the hard part of troubleshooting back then. How you wrote the query depended on your ability to understand the issue in the first place. You needed the right keywords and terminology, and getting the terminology usually meant you already had some idea what was wrong.</p>
+
+<blockquote style="margin:0 0 26px;padding:20px 24px;border-left:3px solid var(--accent);background:var(--panel);font-size:19px;line-height:1.6;color:rgba(var(--ink-rgb),.88)">The search was the reward for having diagnosed it. It was never the diagnosis.</blockquote>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Through all that research, I found out there was an entire world to caching that I had no idea about. Developers spend real time configuring it. It shouldn't be applied aimlessly. Documentation was sparse.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">Fixing it at every layer</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Then came the part that took the longest. It wasn't enough to set an exclusion in one place if the next layer ignored it and served its own cached copy. I had to work through all three separately.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">The plugin also had me paste rules into <code style="font-family:'Space Mono',monospace;font-size:15.5px;background:var(--code-bg);padding:2px 6px;border:1px solid rgba(var(--ink-rgb),.18)">.htaccess</code>, which Apache reads before PHP even loads. So a request could be served from a cached file on disk without WordPress ever running. That was one more place the exclusion had to be right.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">What I ended up doing was excluding the login page and the dashboard from cache at all three layers. Plugin, server, and Cloudflare, separately, because setting it in one place meant nothing if the next layer still had its own copy.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">I was worried at the time that those pages would load slowly without caching. That worry was misplaced. A login page is a form. A dashboard is text and maybe a small file. There isn't much there for a cache to save you on, and both pages are dynamic by definition. As long as you're handling front-end assets sensibly, images, scripts, and the rest, those pages were never the bottleneck.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">What I'd do differently now</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Exclude by cookie rather than by path. WordPress sets a <code style="font-family:'Space Mono',monospace;font-size:15.5px;background:var(--code-bg);padding:2px 6px;border:1px solid rgba(var(--ink-rgb),.18)">wordpress_logged_in_*</code> cookie once someone authenticates. If every layer is told to bypass the cache when that cookie is present, every logged-in page is covered, including those added later. Path exclusion only protects the paths you remembered to write down. Add an account page next year, and you're exposed again.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">There's also a middle option I didn't know existed then. Fragment caching, or ESI, where you cache the page and punch a hole for the part that changes per user. It earns its complexity on something like a high-traffic product page or a news site, where everything but a small header strip is identical for every visitor. For a login page and a dashboard, it would have been overkill. Excluding the whole page was the right call.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Now I'm clear on intent before I turn anything on. I decide whether a page is dynamic first, and that decision drives what gets cached. I pay attention to what's actually being applied at each layer instead of assuming the defaults are fine. And when I exclude something, I verify it at every layer, not just the one I'm looking at.</p>
+
+<h3 style="margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2">What changed, and what didn't</h3>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">Now you have AI to guide you, and it can ask for more context when you're vague. It would have taken me from that symptom description to "cache exclusion" in one turn.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">What it wouldn't have done is tell me when I was finished. I still would have had to describe the symptom accurately. And I still would have had to know that fixing one layer means nothing if the layer above it is handing out a stale copy.</p>
+
+<p style="margin:0 0 22px;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)">That part is still on you.</p>
+
+<div style="height:1px;background:rgba(var(--ink-rgb),.3);margin:34px 0 22px"></div>
+<div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase">
+<a href="#notes">← All notes</a>
+</div>
+</div>
+</div>
+</section>
+
+<section data-page="contact" hidden>
+<div style="max-width:1140px;margin:0 auto;padding:64px 32px 96px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:18px">Contact</div>
+<h2 style="margin:0 0 14px;font-size:clamp(34px,5vw,54px);font-weight:700;letter-spacing:-.038em;text-transform:uppercase;line-height:1">Let's talk</h2>
+<p style="margin:0 0 36px;max-width:58ch;font-size:17px;line-height:1.66;color:rgba(var(--ink-rgb),.8)">Open to junior platform, cloud, and SRE roles — remote or hybrid. I reply to everything within a day.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:22px;align-items:start">
+
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);position:relative;padding:26px 24px">
+<div style="position:absolute;top:-1px;left:-1px;width:11px;height:11px;border-top:2px solid var(--accent);border-left:2px solid var(--accent)"></div>
+<div style="position:absolute;bottom:-1px;right:-1px;width:11px;height:11px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent)"></div>
+<div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:16px">Direct</div>
+<div style="font-family:'Space Mono',monospace;font-size:14px;display:flex;flex-direction:column;gap:11px">
+<a data-placeholder style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px dotted rgba(var(--ink-rgb),.3);padding-bottom:9px"><span style="color:rgba(var(--ink-rgb),.75);font-size:11px;letter-spacing:.08em;text-transform:uppercase">Email</span><span>hire@abdulzainos.com</span></a>
+<a data-placeholder style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px dotted rgba(var(--ink-rgb),.3);padding-bottom:9px"><span style="color:rgba(var(--ink-rgb),.75);font-size:11px;letter-spacing:.08em;text-transform:uppercase">GitHub</span><span>/username ↗</span></a>
+<a data-placeholder style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px dotted rgba(var(--ink-rgb),.3);padding-bottom:9px"><span style="color:rgba(var(--ink-rgb),.75);font-size:11px;letter-spacing:.08em;text-transform:uppercase">LinkedIn</span><span>/in/username ↗</span></a>
+<div style="display:flex;justify-content:space-between;gap:14px"><span style="color:rgba(var(--ink-rgb),.75);font-size:11px;letter-spacing:.08em;text-transform:uppercase">Timezone</span><span>UTC−6</span></div>
+</div>
+<a data-placeholder style="display:block;margin-top:22px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px;background:var(--accent);color:var(--on-accent);font-weight:700;text-align:center" data-lift="">Download résumé (PDF) ↓</a>
+</div>
+
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);padding:26px 24px">
+<div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:16px">Résumé — summary</div>
+<div style="font-family:'Space Mono',monospace;font-size:12.5px">
+
+<div style="padding:10px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3);display:flex;justify-content:space-between;gap:12px"><span>B.S. Cloud &amp; Network Engineering</span><span style="color:rgba(var(--ink-rgb),.75)">WGU · In progress</span></div>
+
+<div style="padding:10px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3);display:flex;justify-content:space-between;gap:12px"><span>Linux Foundations</span><span style="color:rgba(var(--ink-rgb),.75)">LPI · 2026</span></div>
+
+<div style="padding:10px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3);display:flex;justify-content:space-between;gap:12px"><span>ITIL 4 Foundations</span><span style="color:rgba(var(--ink-rgb),.75)">ITIL · 2026</span></div>
+
+<div style="padding:10px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3);display:flex;justify-content:space-between;gap:12px"><span>A+</span><span style="color:rgba(var(--ink-rgb),.75)">CompTIA · 2026</span></div>
+
+<div style="padding:10px 0"><div style="display:flex;justify-content:space-between;gap:12px"><span>1 shipped projects</span><span style="color:rgba(var(--ink-rgb),.75)">2026</span></div><div style="color:rgba(var(--ink-rgb),.75);margin-top:4px">Linux · CLI · SSH · Headless</div></div>
+</div>
+</div>
+</div>
+
+</div>
+</section></div>
+
+<div style="border-top:1px solid rgba(var(--ink-rgb),.3)">
+<div style="max-width:1140px;margin:0 auto;padding:76px 32px 84px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)">Connect</div>
+<div style="border-top:1px solid rgba(var(--ink-rgb),.3);margin-top:14px"></div>
+<div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;margin-top:32px">
+<a data-placeholder data-arrow="" data-lift="" style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);padding:20px;display:flex;align-items:center;gap:16px;color:var(--ink)" class="u-hover-li">
+<span style="flex:none;width:46px;height:46px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:15px;font-weight:700;letter-spacing:.02em">in</span>
+<span style="min-width:0"><span style="display:block;font-size:18px;font-weight:500;letter-spacing:-.02em">LinkedIn</span><span style="display:block;font-family:'Space Mono',monospace;font-size:12px;color:rgba(var(--ink-rgb),.75);margin-top:3px">/in/username</span></span>
+<span style="margin-left:auto;font-family:'Space Mono',monospace;font-size:13px;color:rgba(var(--ink-rgb),.75)">↗</span>
+</a>
+<a data-placeholder data-arrow="" data-lift="" style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);padding:20px;display:flex;align-items:center;gap:16px;color:var(--ink)" class="u-hover-gh">
+<span style="flex:none;width:46px;height:46px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:15px;font-weight:700;letter-spacing:.02em">GH</span>
+<span style="min-width:0"><span style="display:block;font-size:18px;font-weight:500;letter-spacing:-.02em">GitHub</span><span style="display:block;font-family:'Space Mono',monospace;font-size:12px;color:rgba(var(--ink-rgb),.75);margin-top:3px">/username</span></span>
+<span style="margin-left:auto;font-family:'Space Mono',monospace;font-size:13px;color:rgba(var(--ink-rgb),.75)">↗</span>
+</a>
+</div>
+</div>
+</div>
+
+<div style="border-top:1px solid rgba(var(--ink-rgb),.3)">
+<div style="max-width:1140px;margin:0 auto;padding:18px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));align-items:center;gap:12px 20px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">
+<div style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;border-radius:50%;background:oklch(0.65 0.16 150);display:block;flex:none;animation:omLive 2.4s ease-in-out infinite"></span><span>Last updated 2026.09.10</span></div>
+<a href="mailto:hire@abdulzainos.com" style="text-align:right">hire@abdulzainos.com</a>
+</div>
+</div>
+
+</div>
+<script src="site.js"></script>
+</body>
+</html>
