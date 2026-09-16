@@ -136,6 +136,10 @@ button{font-family:inherit}
 .iz-status{position:relative;height:17px;margin-top:14px;padding-top:11px;border-top:1px solid rgba(var(--ink-rgb),.3)}
 .iz-line{position:absolute;left:0;top:11px;white-space:nowrap;font-size:11.5px;letter-spacing:.02em;color:rgba(var(--ink-rgb),.7)}
 .iz-mark{color:var(--accent)}
+.cred-badge{flex:0 0 auto;order:3;margin-left:auto}
+@media (max-width:700px){.cred-badge{order:-1;margin-left:0}}
+.cred-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.cred-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:rgba(var(--ink-rgb),.8);border:1px solid rgba(var(--ink-rgb),.26);background:var(--bg);padding:5px 9px;white-space:nowrap}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}</style>
 </head>
 <body>
@@ -222,8 +226,11 @@ button{font-family:inherit}
 </div>
 </div>
 
-<div style="max-width:1140px;margin:0 auto;padding:0 32px 40px">
-<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px">03 — Experience</div>
+<div style="max-width:1140px;margin:0 auto;padding:0 32px 40px"><div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px">03 — Credentials</div><div data-stagger="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px"><div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-start;padding:26px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)"><div style="flex:0 0 118px;margin-top:6px;font-family:'Space Mono',monospace"><div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">September</div><div style="font-size:17px;line-height:1.15;color:var(--ink)">2026</div></div><div class="cred-badge"><img src="badges/linux-essentials.png" alt="LPI Linux Essentials certification badge" width="76" height="76" loading="lazy" decoding="async" style="display:block;width:76px;height:76px;object-fit:contain"></div><div style="flex:1 1 320px;min-width:0"><div style="font-size:24px;font-weight:500;letter-spacing:-.026em">Linux Essentials</div><div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">Linux Professional Institute</div><div class="cred-tags"><span class="cred-tag">Bash</span><span class="cred-tag">Command Line</span><span class="cred-tag">DNS Client Configuration</span><span class="cred-tag">Linux</span><span class="cred-tag">Linux File Permissions</span><span class="cred-tag">Linux User Management</span><span class="cred-tag">Open Source Software</span><span class="cred-tag">Security</span><span class="cred-tag">Shell Scripting</span></div></div></div><div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-start;padding:26px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)"><div style="flex:0 0 118px;margin-top:6px;font-family:'Space Mono',monospace"><div style="font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">August</div><div style="font-size:17px;line-height:1.15;color:var(--ink)">2026</div></div><div class="cred-badge"><img src="badges/itil-4-foundation.png" alt="ITIL 4 Foundations certification badge" width="76" height="76" loading="lazy" decoding="async" style="display:block;width:76px;height:76px;object-fit:contain"></div><div style="flex:1 1 320px;min-width:0"><div style="font-size:24px;font-weight:500;letter-spacing:-.026em">ITIL 4 Foundations</div><div style="font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-top:5px">AXELOS</div><div class="cred-tags"><span class="cred-tag">Adaptability</span><span class="cred-tag">Availability Management</span><span class="cred-tag">Business Change Management</span><span class="cred-tag">Business Relationship Management</span><span class="cred-tag">Capacity Management</span><span class="cred-tag">Communication</span><span class="cred-tag">IT Systems Governance</span><span class="cred-tag">Incident Management</span><span class="cred-tag">Information Security Management</span><span class="cred-tag">Problem Management</span><span class="cred-tag">Release and Deployment</span><span class="cred-tag">Risk Management</span><span class="cred-tag">Service Delivery Management</span><span class="cred-tag">Service Desk</span><span class="cred-tag">Stakeholder Management</span></div></div></div></div></div>
+
+<div style="background:var(--panel);border-top:1px solid rgba(var(--ink-rgb),.3);border-bottom:1px solid rgba(var(--ink-rgb),.3);color:var(--ink);margin-top:48px">
+<div style="max-width:1140px;margin:0 auto;padding:0 32px 72px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px">04 — Experience</div>
 <div data-stagger="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px">
 
 <div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:24px 0;border-bottom:1px solid rgba(var(--ink-rgb),.18)">
@@ -344,9 +351,10 @@ button{font-family:inherit}
 
 </div>
 </div>
+</div>
 
 <div style="max-width:1140px;margin:0 auto;padding:0 32px 88px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px"><span>04 — Education</span><span>14 of 42 courses · 33%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);padding-top:64px"><span>05 — Education</span><span>14 of 42 courses · 33%</span></div>
 <div data-reveal="" style="border-top:1px solid rgba(var(--ink-rgb),.4);margin-top:14px;padding-top:28px">
 
 <div style="display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between">
