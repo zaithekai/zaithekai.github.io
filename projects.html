@@ -1,0 +1,42 @@
+---
+layout: default
+permalink: /projects/
+nav: work
+title: What I'm building
+description: >-
+  The environment I study and build in, written up the way I'd want to read it:
+  what the problem was, what I built, and what it cost me to learn.
+---
+<div style="max-width:1140px;margin:0 auto;padding:64px 32px 96px">
+<div style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:18px">Work — {{ site.project_notes | size }} project{% if site.project_notes.size != 1 %}s{% endif %}</div>
+<h1 style="margin:0 0 14px;font-size:clamp(34px,5vw,54px);font-weight:700;letter-spacing:-.038em;text-transform:uppercase;line-height:1">What I'm building</h1>
+<p style="margin:0 0 36px;max-width:58ch;font-size:17px;line-height:1.66;color:rgba(var(--ink-rgb),.8)">{{ page.description }}</p>
+<div data-cards="" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),344px));gap:22px">
+{%- assign projects = site.project_notes | sort: 'date' | reverse -%}
+{%- for project in projects %}
+
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--panel);display:flex;flex-direction:column;transition:border-color .2s ease" class="u-hover-soft">
+{%- if project.hero_image %}
+<a href="{{ project.url | relative_url }}" style="height:180px;background:var(--image-bg);border-bottom:1px solid rgba(var(--ink-rgb),.3);display:flex;align-items:center;justify-content:center;padding:14px"><img src="{{ project.hero_image | relative_url }}" alt="{{ project.hero_alt | default: project.title | escape }}" style="display:block;width:100%;height:100%;object-fit:contain"></a>
+{%- endif %}
+<div style="padding:20px;display:flex;flex-direction:column;flex:1">
+<div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:10px"><span>{{ project.number }}</span><span>{{ project.status | default: project.date | date: "%Y" }}</span></div>
+<a href="{{ project.url | relative_url }}" style="font-size:25px;font-weight:500;letter-spacing:-.026em;line-height:1.15;display:block">{{ project.title }}</a>
+{%- if project.description %}
+<p style="margin:9px 0 18px;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.78)">{{ project.description | strip_newlines | strip }}</p>
+{%- endif %}
+<div style="margin-top:auto;border-top:1px solid rgba(var(--ink-rgb),.2);padding-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em">
+{%- for tag in project.tags limit: 2 %}
+<span style="color:rgba(var(--ink-rgb),.75)">{{ tag }}</span>
+{%- endfor %}
+<a href="{{ project.url | relative_url }}" style="margin-left:auto;color:rgba(var(--ink-rgb),.75)">Detail →</a>
+</div>
+</div>
+</div>
+{%- else %}
+
+<p style="padding:22px 0;font-size:17px;color:rgba(var(--ink-rgb),.78)">No projects yet.</p>
+{%- endfor %}
+
+</div>
+</div>

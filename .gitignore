@@ -1,0 +1,9 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+Gemfile.lock
+vendor/
+
+# Local bundler config (bundle config set --local path vendor/bundle)
+.bundle/

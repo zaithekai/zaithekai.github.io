@@ -1,0 +1,246 @@
+/* Extracted verbatim from the <style> block in index.html. Values unchanged. */
+:root{--bg:#eceef0;--panel:#f4f5f6;--ink:#16181b;--ink-rgb:22,24,27;--image-bg:#f1efe8;--accent:oklch(0.55 0.19 25);--accent-soft:oklch(0.55 0.19 25 / .45);--on-accent:#f4f5f6}
+[data-theme="dark"]{--bg:#131313;--panel:#1c1c1c;--ink:#e9e8e4;--ink-rgb:233,232,228;--image-bg:#232323;--accent:oklch(0.7 0.17 25);--accent-soft:oklch(0.7 0.17 25 / .45);--on-accent:#131313}
+/* color-scheme is deliberately pinned to light in both themes. Declaring
+   `color-scheme: dark` made Chrome paint a full-width band of the wrong
+   background colour part-way down the page, with edges that lined up with no
+   element; it disappeared the moment the declaration was disabled, and only
+   below ~400px wide. Nothing here needs the dark UA widget styling: every
+   colour on the site is author-painted and the only controls are buttons we
+   style ourselves. Scrollbars are the one thing color-scheme was buying, so
+   they are set explicitly instead, which does not carry the same behaviour. */
+html{background:var(--bg);color-scheme:light}
+[data-theme="dark"]{scrollbar-color:#3a3a3a #131313}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}
+button{font-family:inherit}
+*{box-sizing:border-box}
+@keyframes omLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+@keyframes omRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+[data-cards]>*{animation:omRise .55s cubic-bezier(.2,.7,.3,1) both}
+[data-cards]>*:nth-child(2){animation-delay:80ms}
+[data-cards]>*:nth-child(3){animation-delay:160ms}
+[data-cards]>*:nth-child(4){animation-delay:240ms}
+[data-reveal]{opacity:0;transform:translateY(18px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+[data-stagger]>*{opacity:0;transform:translateY(14px)}
+[data-stagger].is-in>*{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
+[data-stagger].is-in>*:nth-child(2){transition-delay:70ms}
+[data-stagger].is-in>*:nth-child(3){transition-delay:140ms}
+[data-stagger].is-in>*:nth-child(4){transition-delay:210ms}
+[data-stagger].is-in>*:nth-child(5){transition-delay:280ms}
+[data-stagger].is-in>*:nth-child(6){transition-delay:350ms}
+[data-lift]{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s ease,color .2s ease,background-color .2s ease}
+[data-lift]:hover{transform:translateY(-2px)}
+[data-arrow] span:last-child,[data-arrow-r] span:last-child{transition:transform .24s cubic-bezier(.2,.7,.3,1)}
+[data-arrow]:hover span:last-child{transform:translate(3px,-3px)}
+[data-arrow-r]:hover span:last-child{transform:translateX(5px)}
+@media (prefers-reduced-motion:reduce){[data-reveal],[data-stagger]>*{opacity:1!important;transform:none!important}[data-lift]:hover{transform:none}*{animation:none!important}}
+[hidden]{display:none!important}
+[data-nav]{color:rgba(var(--ink-rgb),.72)}
+[data-nav].is-active{color:var(--accent)}
+.u-hover-accent:hover{border-color:var(--accent)!important;color:var(--accent)!important}
+.u-hover-soft:hover{border-color:var(--accent-soft)!important}
+.u-hover-tint:hover{background:rgba(var(--ink-rgb),.04)}
+.u-hover-li:hover{border-color:#0A66C2!important;color:#0A66C2!important}
+.u-hover-gh:hover{border-color:#6E5494!important;color:#6E5494!important}
+[data-placeholder]{cursor:default}
+[data-placeholder]:hover{color:inherit}
+/* isometric delivery pipeline */
+.iz-wrap{position:relative;margin:16px -4px 0}
+.iz svg{display:block;width:100%;height:auto;overflow:visible}
+.iz-top{fill:rgba(var(--ink-rgb),.035);stroke:rgba(var(--ink-rgb),.40);stroke-width:1;stroke-linejoin:round}
+.iz-sl{fill:rgba(var(--ink-rgb),.13);stroke:rgba(var(--ink-rgb),.34);stroke-width:1;stroke-linejoin:round}
+.iz-sr{fill:rgba(var(--ink-rgb),.06);stroke:rgba(var(--ink-rgb),.34);stroke-width:1;stroke-linejoin:round}
+.iz-strut{stroke:rgba(var(--ink-rgb),.30);stroke-width:1;stroke-dasharray:2 5;fill:none}
+.iz-screen{fill:rgba(var(--ink-rgb),.07);stroke:rgba(var(--ink-rgb),.30);stroke-width:1;stroke-linejoin:round}
+.iz-bar{fill:rgba(var(--ink-rgb),.42)}
+.iz-bar-a{fill:var(--accent)}
+.iz-bt{fill:rgba(var(--ink-rgb),.05);stroke:rgba(var(--ink-rgb),.45);stroke-width:1;stroke-linejoin:round}
+.iz-bl{fill:rgba(var(--ink-rgb),.16);stroke:rgba(var(--ink-rgb),.40);stroke-width:1;stroke-linejoin:round}
+.iz-br{fill:rgba(var(--ink-rgb),.09);stroke:rgba(var(--ink-rgb),.40);stroke-width:1;stroke-linejoin:round}
+.iz-lt{fill:var(--accent);fill-opacity:.46;stroke:var(--accent);stroke-width:1;stroke-linejoin:round}
+.iz-ll{fill:var(--accent);fill-opacity:.26;stroke:var(--accent);stroke-width:1;stroke-linejoin:round}
+.iz-lr{fill:var(--accent);fill-opacity:.15;stroke:var(--accent);stroke-width:1;stroke-linejoin:round}
+.iz-wire{stroke:rgba(var(--ink-rgb),.34);stroke-width:1;fill:none}
+.iz-pkt{fill:var(--accent);stroke:var(--accent);stroke-width:1;stroke-linejoin:round}
+.iz-float{animation:izFloat 6s ease-in-out infinite}
+@keyframes izFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3.5px)}}
+@keyframes izPod5{0%,67.083%{opacity:0}68.917%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod5{animation:izPod5 12s linear infinite}
+@keyframes izPod2{0%,59.583%{opacity:0}61.417%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod2{animation:izPod2 12s linear infinite}
+@keyframes izPod1{0%,57.083%{opacity:0}58.917%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod1{animation:izPod1 12s linear infinite}
+@keyframes izPod6{0%,69.583%{opacity:0}71.417%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod6{animation:izPod6 12s linear infinite}
+@keyframes izPod0{0%,54.583%{opacity:0}56.417%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod0{animation:izPod0 12s linear infinite}
+@keyframes izPod7{0%,72.083%{opacity:0}73.917%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod7{animation:izPod7 12s linear infinite}
+@keyframes izPod3{0%,62.083%{opacity:0}63.917%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod3{animation:izPod3 12s linear infinite}
+@keyframes izPod4{0%,64.583%{opacity:0}66.417%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod4{animation:izPod4 12s linear infinite}
+@keyframes izPod8{0%,74.583%{opacity:0}76.417%,94.583%{opacity:1}96.417%,100%{opacity:0}}
+.iz-pod8{animation:izPod8 12s linear infinite}
+@keyframes izCi0{0%,25.417%{opacity:0}27.083%,93.333%{opacity:1}95%,100%{opacity:0}}
+.iz-ci0{animation:izCi0 12s linear infinite}
+@keyframes izCi1{0%,33.75%{opacity:0}35.417%,93.333%{opacity:1}95%,100%{opacity:0}}
+.iz-ci1{animation:izCi1 12s linear infinite}
+@keyframes izCi2{0%,42.083%{opacity:0}43.75%,93.333%{opacity:1}95%,100%{opacity:0}}
+.iz-ci2{animation:izCi2 12s linear infinite}
+@keyframes izTok0{0%,29.583%{opacity:0;transform:translate(0,0)}30.417%{opacity:1;transform:translate(0,0)}32.5%{opacity:1;transform:translate(45px,14.4px)}33.333%,100%{opacity:0;transform:translate(45px,14.4px)}}
+.iz-tok0{animation:izTok0 12s linear infinite}
+@keyframes izTok1{0%,37.917%{opacity:0;transform:translate(0,0)}38.75%{opacity:1;transform:translate(0,0)}40.833%{opacity:1;transform:translate(45px,14.4px)}41.667%,100%{opacity:0;transform:translate(45px,14.4px)}}
+.iz-tok1{animation:izTok1 12s linear infinite}
+@keyframes izWd0{0%,2.917%{opacity:0}3.75%,95.833%{opacity:1}96.667%,100%{opacity:0}}
+.iz-wd0{animation:izWd0 12s linear infinite}
+@keyframes izWd1{0%,5.417%{opacity:0}6.25%,95.833%{opacity:1}96.667%,100%{opacity:0}}
+.iz-wd1{animation:izWd1 12s linear infinite}
+@keyframes izWd2{0%,7.917%{opacity:0}8.75%,95.833%{opacity:1}96.667%,100%{opacity:0}}
+.iz-wd2{animation:izWd2 12s linear infinite}
+@keyframes izOut0{0%,12.917%{opacity:0}13.917%,95.833%{opacity:1}96.833%,100%{opacity:0}}
+.iz-out0{animation:izOut0 12s linear infinite}
+@keyframes izOut1{0%,15.833%{opacity:0}16.833%,95.833%{opacity:1}96.833%,100%{opacity:0}}
+.iz-out1{animation:izOut1 12s linear infinite}
+@keyframes izCaret{0%{opacity:0}1.667%{opacity:0}1.833%{opacity:1}4.25%{opacity:1}4.353%{opacity:0}6.833%{opacity:0}7%{opacity:1}9.417%{opacity:1}9.52%{opacity:0}12%{opacity:0}12.167%{opacity:1}14.583%{opacity:1}14.687%{opacity:0}100%{opacity:0}}
+.iz-caret{animation:izCaret 12s linear infinite}
+@keyframes izDrop0{0%,20.417%{opacity:0;transform:translateY(0)}21.417%{opacity:1;transform:translateY(0)}24.583%{opacity:1;transform:translateY(96px)}25.583%,100%{opacity:0;transform:translateY(96px)}}
+.iz-drop0{animation:izDrop0 12s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes izDrop1{0%,48.75%{opacity:0;transform:translateY(0)}49.75%{opacity:1;transform:translateY(0)}52.917%{opacity:1;transform:translateY(96px)}53.917%,100%{opacity:0;transform:translateY(96px)}}
+.iz-drop1{animation:izDrop1 12s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes izSt0{0%,0.417%{opacity:0}1.917%,21.833%{opacity:1}23.333%,100%{opacity:0}}
+.iz-st0{animation:izSt0 12s linear infinite}
+@keyframes izSt1{0%,23.75%{opacity:0}25.25%,49.583%{opacity:1}51.083%,100%{opacity:0}}
+.iz-st1{animation:izSt1 12s linear infinite}
+@keyframes izSt2{0%,52.917%{opacity:0}54.417%,97.5%{opacity:1}99%,100%{opacity:0}}
+.iz-st2{animation:izSt2 12s linear infinite}
+.iz-status{position:relative;height:17px;margin-top:14px;padding-top:11px;border-top:1px solid rgba(var(--ink-rgb),.3)}
+.iz-line{position:absolute;left:0;top:11px;white-space:nowrap;font-size:11.5px;letter-spacing:.02em;color:rgba(var(--ink-rgb),.7)}
+.iz-mark{color:var(--accent)}
+.cred-badge{flex:0 0 auto}
+@media (max-width:700px){.cred-badge{order:-1}}
+.cred-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.cred-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:rgba(var(--ink-rgb),.8);border:1px solid rgba(var(--ink-rgb),.26);background:var(--bg);padding:5px 9px;white-space:nowrap}
+.cert{position:relative;display:inline-block;flex:none;vertical-align:baseline}
+.cert-pill{font-family:'Space Mono',monospace;font-size:10.5px;line-height:1.35;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border:1px solid rgba(var(--ink-rgb),.4);border-radius:0;background:transparent;color:rgba(var(--ink-rgb),.72);cursor:pointer;transition:border-color .16s ease,color .16s ease}
+.cert-pill:hover,.cert.is-open>.cert-pill{border-color:rgba(var(--ink-rgb),.85);color:var(--ink)}
+.cert-pill[data-earned]{border-color:var(--accent-soft);color:var(--accent)}
+.cert-pill[data-earned]:hover,.cert.is-open>.cert-pill[data-earned]{border-color:var(--accent);color:var(--accent)}
+/* Closed trays are display:none, not visibility:hidden. An absolutely
+   positioned, invisible tray still occupies layout and still counts toward
+   scrollable overflow, and at 280px wide anchored left:0 the right-hand pills
+   pushed the document ~160px past the viewport — the page scrolled sideways
+   with nothing visible out there. display:none claims no space at all.
+   placeCert() measures the tray to decide the flip, so it must stay callable:
+   every caller runs after .is-open (or :hover) has already displayed it. */
+.cert-tray{position:absolute;left:0;top:calc(100% + 7px);z-index:40;width:max-content;max-width:min(280px,calc(100vw - 32px));background:var(--panel);border:1px solid rgba(var(--ink-rgb),.4);padding:8px 10px;font-family:'Space Mono',monospace;font-size:11px;line-height:1.5;letter-spacing:.03em;text-transform:none;color:rgba(var(--ink-rgb),.85);display:none;opacity:0;transition:opacity .14s ease,display .14s allow-discrete}
+.cert-tray.is-flipped{left:auto;right:0}
+.cert.is-open>.cert-tray{display:block;opacity:1}
+@media (hover:hover){.cert:hover>.cert-tray{display:block;opacity:1}}
+/* display is not interpolable, so the fade needs an explicit start value.
+   Unsupported browsers just skip the fade and show the tray immediately. */
+@starting-style{.cert.is-open>.cert-tray{opacity:0}}
+@media (hover:hover){@starting-style{.cert:hover>.cert-tray{opacity:0}}}
+@media (prefers-reduced-motion:reduce){.cert-pill,.cert-tray{transition:none}}
+/* The header is sticky, and the footer runs an infinite pulse animation, so
+   the page repaints continuously while scrolling. Without its own compositing
+   layer the sticky header forces the content beneath it to re-rasterize, which
+   on macOS can leave a stale tile: a full-width band painted in the wrong
+   background colour, with edges that line up with nothing on the page.
+   Promoting it to its own layer keeps the two from sharing tiles. */
+.site-header{will-change:transform;transform:translateZ(0)}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---- article body ------------------------------------------------------- */
+/* Values for p / h3 / blockquote / code are lifted from the inline styles on
+   the original post in index.html. Headings, lists, pre, images and tables
+   are derived from the same tokens and type scale. */
+
+/* Two spacing steps drive the whole body: --flow between run-of-text blocks,
+   --flow-block above AND below anything that reads as a framed figure. The
+   framed blocks are symmetric on purpose — adjacent sibling margins collapse
+   to the larger value, so a figure sits the same distance from a paragraph as
+   from a heading, instead of inheriting whatever preceded it. */
+.post-body{max-width:70ch;--flow:22px;--flow-block:26px}
+.post-body>:first-child{margin-top:0}
+.post-body>:last-child{margin-bottom:0}
+
+.post-body p{margin:0 0 var(--flow);font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)}
+
+.post-body h2{margin:44px 0 14px;font-size:32px;font-weight:700;letter-spacing:-.032em;line-height:1.14}
+.post-body h3{margin:38px 0 14px;font-size:27px;font-weight:600;letter-spacing:-.028em;line-height:1.2}
+.post-body h4{margin:32px 0 12px;font-size:21px;font-weight:600;letter-spacing:-.022em;line-height:1.25}
+.post-body h5,.post-body h6{margin:28px 0 10px;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+.post-body ul,.post-body ol{margin:0 0 var(--flow);padding-left:1.35em;font-size:18px;line-height:1.75;color:rgba(var(--ink-rgb),.88)}
+.post-body li{margin-bottom:9px}
+.post-body li>ul,.post-body li>ol{margin:9px 0 0}
+.post-body li::marker{color:rgba(var(--ink-rgb),.55)}
+.post-body ol li::marker{font-family:'Space Mono',monospace;font-size:14px;color:var(--accent)}
+
+.post-body blockquote{margin:var(--flow-block) 0;padding:2px 0 2px 22px;border-left:3px solid var(--accent);font-size:19px;line-height:1.6;color:rgba(var(--ink-rgb),.88)}
+.post-body blockquote>:last-child{margin-bottom:0}
+.post-body blockquote p{font-size:inherit;line-height:inherit;color:inherit}
+
+.post-body code{font-family:'Space Mono',monospace;font-size:15.5px;padding:2px 6px;border:1px solid rgba(var(--ink-rgb),.26)}
+/* Code wraps by default rather than scrolling sideways. A scroll container
+   here was actively harmful: `overflow-x:auto` makes overflow-y compute to
+   `auto` as well, so every block became scrollable on both axes and painted
+   scrollbar tracks inside its own border. Wrapping also means nothing is
+   hidden from a reader who never thinks to drag sideways, and a soft wrap
+   puts no newline into what gets copied. */
+.post-body pre{margin:var(--flow-block) 0;padding:18px 20px;border:1px solid rgba(var(--ink-rgb),.26);white-space:pre-wrap;overflow-wrap:break-word;font-family:'Space Mono',monospace;font-size:14.5px;line-height:1.7;color:rgba(var(--ink-rgb),.9)}
+
+/* Opt out per block with a kramdown class on the fence: put {:.scroll} on the
+   line after the closing ``` and columns are preserved instead of wrapped.
+   For output tables, diffs and ASCII diagrams, where a wrap scrambles meaning.
+   overflow-y is set explicitly, or overflow-x alone would turn it into `auto`. */
+.post-body .scroll pre{white-space:pre;overflow-x:auto;overflow-y:hidden}
+.post-body pre code{border:0;padding:0;font-size:inherit}
+.post-body .highlight,.post-body figure.highlight{margin:var(--flow-block) 0}
+.post-body .highlight pre{margin:0}
+
+.post-body img{display:block;max-width:100%;height:auto;margin:var(--flow-block) 0;border:1px solid rgba(var(--ink-rgb),.3)}
+.post-body figure{margin:var(--flow-block) 0}
+.post-body figure img{margin:0}
+.post-body figcaption{margin-top:10px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)}
+
+.post-body hr{height:1px;border:0;background:rgba(var(--ink-rgb),.3);margin:34px 0}
+.post-body a{color:var(--accent);border-bottom:1px solid var(--accent-soft)}
+.post-body a:hover{border-bottom-color:var(--accent)}
+.post-body strong{font-weight:600}
+
+.post-body table{width:100%;margin:var(--flow-block) 0;border-collapse:collapse;font-family:'Space Mono',monospace;font-size:13px}
+.post-body th,.post-body td{text-align:left;padding:9px 12px 9px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)}
+.post-body th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);font-weight:400}
+
+/* Rouge tokens, kept to the existing palette. */
+.post-body .highlight .c,.post-body .highlight .c1,.post-body .highlight .cm{color:rgba(var(--ink-rgb),.5);font-style:italic}
+.post-body .highlight .k,.post-body .highlight .kd,.post-body .highlight .kn,.post-body .highlight .kr{color:var(--accent)}
+.post-body .highlight .s,.post-body .highlight .s1,.post-body .highlight .s2,.post-body .highlight .se{color:rgba(var(--ink-rgb),.74)}
+.post-body .highlight .nb,.post-body .highlight .nf,.post-body .highlight .nc{color:rgba(var(--ink-rgb),.95)}
+.post-body .highlight .m,.post-body .highlight .mi,.post-body .highlight .mf{color:var(--accent)}
+.post-body .highlight .o,.post-body .highlight .p{color:rgba(var(--ink-rgb),.7)}
+.post-body .highlight .gd{color:oklch(0.55 0.19 25)}
+.post-body .highlight .gi{color:oklch(0.55 0.14 150)}
+
+/* ---- collection index lists --------------------------------------------- */
+
+.list-row{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;padding:22px 20px;border-bottom:1px solid rgba(var(--ink-rgb),.18)}
+.list-date{flex:0 0 102px;font-family:'Space Mono',monospace;font-size:12px;color:rgba(var(--ink-rgb),.75)}
+.list-main{flex:1 1 280px;min-width:0}
+.list-title{font-size:21px;font-weight:500;letter-spacing:-.02em}
+.list-desc{margin:7px 0 0;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.78)}
+.list-tags{flex:0 0 auto;margin-left:auto;font-family:'Space Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:rgba(var(--ink-rgb),.75)}
+
+/* Project write-ups keep the slightly tighter type and the numbered step rows
+   from the original project detail page. */
+.post-body--project{max-width:none;--flow:30px;--flow-block:30px}
+.post-body--project p{margin:0 0 var(--flow);font-size:17px;line-height:1.7;color:rgba(var(--ink-rgb),.85)}
+.post-body--project h5,.post-body--project h6{margin:0 0 10px}
+.post-body--project ol{list-style:none;margin:0 0 var(--flow);padding:0;border-top:1px solid rgba(var(--ink-rgb),.2);counter-reset:step}
+.post-body--project ol li{counter-increment:step;display:flex;gap:14px;margin:0;padding:12px 0;border-bottom:1px solid rgba(var(--ink-rgb),.14);font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.82)}
+.post-body--project ol li::before{content:counter(step,decimal-leading-zero);font-family:'Space Mono',monospace;font-size:11.5px;color:var(--accent);padding-top:4px;flex:none}

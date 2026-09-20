@@ -1,0 +1,47 @@
+title: Abdul Zainos
+url: https://www.abdulzainos.com
+description: >-
+  Portfolio and working notes of Abdul Zainos, a cloud and network engineering
+  student on the AWS and Linux track — labs, project write-ups, and short
+  posts about things that broke the first time.
+author: Abdul Zainos
+lang: en
+
+collections:
+  working_notes:
+    output: true
+    permalink: /notes/:name/
+  project_notes:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: working_notes
+    values:
+      layout: post
+      collection_label: Notes
+      collection_url: /notes/
+      nav: notes
+  - scope:
+      path: ""
+      type: project_notes
+    values:
+      layout: post
+      collection_label: Work
+      collection_url: /projects/
+      nav: work
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+exclude:
+  - README.md
+  - tools/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

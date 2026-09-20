@@ -1,0 +1,54 @@
+---
+layout: default
+---
+{%- assign back_url = page.collection_url | default: '/notes/' -%}
+{%- assign back_label = page.collection_label | default: 'Notes' | downcase -%}
+<div style="max-width:1140px;margin:0 auto;padding:52px 32px 96px">
+<a href="{{ back_url | relative_url }}" style="font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">← All {{ back_label }}</a>
+
+{%- if page.spec %}
+{% comment %} project shape: wide header, hero image, two columns, sticky spec panel {% endcomment %}
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;margin-top:26px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)">{% if page.number %}<span style="color:var(--accent)">{{ page.number }}</span>{% endif %}{% if page.status %}<span>{{ page.status }}</span>{% endif %}<span>{{ page.date | date: "%Y" }}</span></div>
+<h1 style="margin:12px 0 0;font-size:clamp(32px,4.6vw,52px);font-weight:700;letter-spacing:-.038em;line-height:1.02;max-width:18ch">{{ page.title }}</h1>
+{%- if page.description %}
+<p style="margin:20px 0 32px;max-width:60ch;font-size:17.5px;line-height:1.68;color:rgba(var(--ink-rgb),.82)">{{ page.description }}</p>
+{%- endif %}
+
+{%- if page.hero_image %}
+<div style="border:1px solid rgba(var(--ink-rgb),.3);background:var(--image-bg);height:380px;display:flex;align-items:center;justify-content:center;padding:28px;margin-bottom:36px"><img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_alt | default: page.title | escape }}" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+{%- endif %}
+
+<div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;padding-bottom:20px">
+<div class="post-body post-body--project" style="flex:1 1 400px;min-width:0;max-width:none">
+{{ content }}
+</div>
+<div style="flex:1 1 250px;min-width:0;border:1px solid rgba(var(--ink-rgb),.28);background:var(--panel);padding:22px;position:sticky;top:82px">
+<div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75);margin-bottom:14px">Specification</div>
+<div style="font-family:'Space Mono',monospace;font-size:12.5px">
+{%- for row in page.spec %}
+<div style="display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px dotted rgba(var(--ink-rgb),.3)"><span style="color:rgba(var(--ink-rgb),.75)">{{ row[0] | upcase }}</span><span style="text-align:right">{{ row[1] }}</span></div>
+{%- endfor %}
+</div>
+</div>
+</div>
+
+{%- else %}
+{% comment %} note shape: single 70ch column {% endcomment %}
+<div style="max-width:70ch;margin-top:28px">
+<div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.75)"><span style="color:var(--accent)">{{ page.date | date: "%Y.%m.%d" }}</span>{% if page.reading_time %}<span>{{ page.reading_time }}</span>{% endif %}{% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}</div>
+<h1 style="margin: 14px 0 0; font-size: clamp(30px,4.2vw,46px); font-weight: 700; letter-spacing: -.036em; line-height: 1.06; text-transform: capitalize">{{ page.title }}</h1>
+{%- if page.description %}
+<p style="margin:20px 0 0;font-size:20px;line-height:1.6;color:rgba(var(--ink-rgb),.8);font-weight:400">{{ page.description }}</p>
+{%- endif %}
+<div style="height:1px;background:rgba(var(--ink-rgb),.3);margin:32px 0 34px"></div>
+
+<div class="post-body">
+{{ content }}
+</div>
+</div>
+{%- endif %}
+
+<div style="border-top:1px solid rgba(var(--ink-rgb),.3);margin-top:34px;padding:22px 0 8px;display:flex;justify-content:space-between;gap:20px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase">
+<a href="{{ back_url | relative_url }}">← All {{ back_label }}</a>
+</div>
+</div>
