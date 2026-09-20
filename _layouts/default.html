@@ -30,11 +30,6 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ full_title | escape }}">
 <meta name="twitter:description" content="{{ page_description | escape }}">
-<script>
-(function(){var t;try{t=localStorage.getItem("az-theme")}catch(e){}
-if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
-document.documentElement.setAttribute("data-theme",t)})();
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
@@ -51,11 +46,6 @@ document.documentElement.setAttribute("data-theme",t)})();
 <a href="{{ '/projects/' | relative_url }}" data-nav="work"{% if page.nav == 'work' %} class="is-active"{% endif %}>Work</a>
 <a href="{{ '/notes/' | relative_url }}" data-nav="notes"{% if page.nav == 'notes' %} class="is-active"{% endif %}>Notes</a>
 <a href="{{ '/contact/' | relative_url }}" data-nav="contact"{% if page.nav == 'contact' %} class="is-active"{% endif %}>Contact</a>
-<button type="button" data-theme-toggle aria-label="Toggle colour theme" style="cursor:pointer;background:none;border:1px solid rgba(var(--ink-rgb),.35);color:inherit;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;display:flex;align-items:center;gap:8px" class="u-hover-accent">
-<span data-theme-icon="light" style="display:flex"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="display:block;flex:none"><path d="M13.2 9.9A5.6 5.6 0 0 1 6.1 2.8 5.6 5.6 0 1 0 13.2 9.9Z"></path></svg></span>
-<span data-theme-icon="dark" hidden style="display:flex"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="display:block;flex:none"><circle cx="8" cy="8" r="3.1"></circle><path d="M8 1v1.8M8 13.2V15M1 8h1.8M13.2 8H15M3.05 3.05l1.27 1.27M11.68 11.68l1.27 1.27M12.95 3.05l-1.27 1.27M4.32 11.68l-1.27 1.27"></path></svg></span>
-<span data-theme-label>Dark</span>
-</button>
 </div>
 </div>
 </div>

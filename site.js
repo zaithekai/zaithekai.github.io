@@ -1,29 +1,8 @@
-/* Behaviour for the portfolio: theme toggle, scroll reveal, certification pills.
-   Page routing is Jekyll's job now; this file is interactivity only. */
+/* Behaviour for the portfolio: scroll reveal and certification pills.
+   Page routing is Jekyll's job; this file is interactivity only. The site is
+   light-only, so there is no theme handling here any more. */
 (function () {
   "use strict";
-
-  /* ---- theme ------------------------------------------------------------- */
-
-  function currentTheme() {
-    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  }
-
-  function applyTheme(t) {
-    document.documentElement.setAttribute("data-theme", t);
-    var label = document.querySelector("[data-theme-label]");
-    if (label) label.textContent = t === "dark" ? "Light" : "Dark";
-    document.querySelectorAll("[data-theme-icon]").forEach(function (el) {
-      el.hidden = el.getAttribute("data-theme-icon") !== (t === "dark" ? "dark" : "light");
-    });
-  }
-
-  function toggleTheme() {
-    var t = currentTheme() === "dark" ? "light" : "dark";
-    try { localStorage.setItem("az-theme", t); } catch (e) {}
-    applyTheme(t);
-    reveal();
-  }
 
   /* ---- scroll reveal ----------------------------------------------------- */
 
@@ -128,13 +107,9 @@
     }
     if (openCert && !certOf(e.target)) closeCert();
 
-    var toggle = e.target.closest("[data-theme-toggle]");
-    if (toggle) { toggleTheme(); return; }
-
     var placeholder = e.target.closest("[data-placeholder]");
     if (placeholder) { e.preventDefault(); return; }
   });
 
-  applyTheme(currentTheme());
   reveal();
 })();

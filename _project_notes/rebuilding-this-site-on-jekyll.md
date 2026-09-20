@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rebuilding this site on Jekyll
+title: How I built this website
 date: 2026-09-20
 description: >-
   How I moved my portfolio from a single exported HTML page to a Jekyll site
@@ -8,6 +8,8 @@ description: >-
 tags: [jekyll, github-pages, ruby, claude-code, homelab]
 number: "002"
 status: Complete
+hero_image: /jekyll-logo.png
+hero_alt: Jekyll logo
 spec:
   generator: Jekyll
   hosting: GitHub Pages

@@ -1,16 +1,11 @@
 /* Extracted verbatim from the <style> block in index.html. Values unchanged. */
 :root{--bg:#eceef0;--panel:#f4f5f6;--ink:#16181b;--ink-rgb:22,24,27;--image-bg:#f1efe8;--accent:oklch(0.55 0.19 25);--accent-soft:oklch(0.55 0.19 25 / .45);--on-accent:#f4f5f6}
-[data-theme="dark"]{--bg:#131313;--panel:#1c1c1c;--ink:#e9e8e4;--ink-rgb:233,232,228;--image-bg:#232323;--accent:oklch(0.7 0.17 25);--accent-soft:oklch(0.7 0.17 25 / .45);--on-accent:#131313}
-/* color-scheme is deliberately pinned to light in both themes. Declaring
-   `color-scheme: dark` made Chrome paint a full-width band of the wrong
-   background colour part-way down the page, with edges that lined up with no
-   element; it disappeared the moment the declaration was disabled, and only
-   below ~400px wide. Nothing here needs the dark UA widget styling: every
-   colour on the site is author-painted and the only controls are buttons we
-   style ourselves. Scrollbars are the one thing color-scheme was buying, so
-   they are set explicitly instead, which does not carry the same behaviour. */
+/* The site is light-only. A dark theme used to override the tokens above,
+   but it kept producing a full-width band of the wrong background colour
+   part-way down the page, so it was removed entirely along with its toggle,
+   its bootstrap script and its localStorage key. color-scheme stays light so
+   the UA cannot reintroduce dark widget styling from a system preference. */
 html{background:var(--bg);color-scheme:light}
-[data-theme="dark"]{scrollbar-color:#3a3a3a #131313}
 body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}
 button{font-family:inherit}
