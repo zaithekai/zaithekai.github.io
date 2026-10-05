@@ -1,34 +1,8 @@
-/* Behaviour for the portfolio: scroll reveal and certification pills.
-   Page routing is Jekyll's job; this file is interactivity only. The site is
-   light-only, so there is no theme handling here any more. */
+/* Behaviour for the portfolio: certification pills, and nothing else.
+   Page routing is Jekyll's job. The site is light-only, and the entrance and
+   scroll-reveal animations were removed, so no observer runs here any more. */
 (function () {
   "use strict";
-
-  /* ---- scroll reveal ----------------------------------------------------- */
-
-  var observer = null;
-  var SELECTOR = "[data-reveal]:not(.is-in),[data-stagger]:not(.is-in)";
-
-  function reveal() {
-    var nodes = document.querySelectorAll(SELECTOR);
-    if (!("IntersectionObserver" in window)) {
-      nodes.forEach(function (el) { el.classList.add("is-in"); });
-      return;
-    }
-    if (!observer) {
-      observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var el = e.target;
-          observer.unobserve(el);
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () { el.classList.add("is-in"); });
-          });
-        });
-      }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
-    }
-    nodes.forEach(function (el) { observer.observe(el); });
-  }
 
   /* ---- certification pills ----------------------------------------------- */
 
@@ -111,5 +85,4 @@
     if (placeholder) { e.preventDefault(); return; }
   });
 
-  reveal();
 })();

@@ -148,9 +148,20 @@ every interface instead of just loopback:
 bundle exec jekyll serve --host 0.0.0.0 --livereload
 ```
 
-Then browse to `http://<host-lan-ip>:4000` from a laptop on the same network —
-`ipconfig getifaddr en0` on the host prints the address. LiveReload still works,
-because the injected script follows whatever hostname the page was loaded from.
+Then browse to `http://<host-lan-ip>:4000` from a laptop on the same network.
+LiveReload still works, because the injected script follows whatever hostname
+the page was loaded from.
+
+To find the address, ask for the interface the default route actually uses.
+Don't hardcode `en0`: this host is on `en1`, and `ipconfig getifaddr en0`
+prints nothing at all when it guesses wrong.
+
+```sh
+ipconfig getifaddr "$(route -n get default | awk '/interface:/{print $2}')"
+```
+
+Listing every address instead is noisier than it looks, because the Multipass
+bridges answer too.
 
 If the two machines are not on the same network, tunnel over SSH instead and
 keep the server on loopback:

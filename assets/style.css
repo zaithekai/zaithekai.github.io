@@ -11,26 +11,12 @@ a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}
 button{font-family:inherit}
 *{box-sizing:border-box}
 @keyframes omLive{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
-@keyframes omRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-[data-cards]>*{animation:omRise .55s cubic-bezier(.2,.7,.3,1) both}
-[data-cards]>*:nth-child(2){animation-delay:80ms}
-[data-cards]>*:nth-child(3){animation-delay:160ms}
-[data-cards]>*:nth-child(4){animation-delay:240ms}
-[data-reveal]{opacity:0;transform:translateY(18px)}
-[data-reveal].is-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
-[data-stagger]>*{opacity:0;transform:translateY(14px)}
-[data-stagger].is-in>*{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
-[data-stagger].is-in>*:nth-child(2){transition-delay:70ms}
-[data-stagger].is-in>*:nth-child(3){transition-delay:140ms}
-[data-stagger].is-in>*:nth-child(4){transition-delay:210ms}
-[data-stagger].is-in>*:nth-child(5){transition-delay:280ms}
-[data-stagger].is-in>*:nth-child(6){transition-delay:350ms}
 [data-lift]{transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s ease,color .2s ease,background-color .2s ease}
 [data-lift]:hover{transform:translateY(-2px)}
 [data-arrow] span:last-child,[data-arrow-r] span:last-child{transition:transform .24s cubic-bezier(.2,.7,.3,1)}
 [data-arrow]:hover span:last-child{transform:translate(3px,-3px)}
 [data-arrow-r]:hover span:last-child{transform:translateX(5px)}
-@media (prefers-reduced-motion:reduce){[data-reveal],[data-stagger]>*{opacity:1!important;transform:none!important}[data-lift]:hover{transform:none}*{animation:none!important}}
+@media (prefers-reduced-motion:reduce){[data-lift]:hover{transform:none}*{animation:none!important}}
 [hidden]{display:none!important}
 [data-nav]{color:rgba(var(--ink-rgb),.72)}
 [data-nav].is-active{color:var(--accent)}
