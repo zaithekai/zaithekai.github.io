@@ -52,7 +52,7 @@ Here's where my certifications stand:
 
 - **ITIL 4 Foundation (2026):** How IT teams organize their work so problems get fixed the same way every time.
 - **LPI Linux Essentials (2026):** Proof that I know my way around Linux.
-- **CompTIA A+:** The standard entry-level IT certification. I passed the first of two exams. The second one is on October 9.
+- **CompTIA A+:** The standard entry-level IT certification. I passed the Core 2 exam (220-1202).
 - **CompTIA Network+:** Next on the list.
 
 ## Where I'm headed
