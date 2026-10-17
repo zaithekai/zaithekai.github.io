@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What I'm studying (and why)"
-date: 2026-10-17
+date: 2026-10-05
 description: >-
   A plain-language explanation of cloud and network engineering, written for my
   family and friends. What I'm learning, how I got here, where I'm headed, and
