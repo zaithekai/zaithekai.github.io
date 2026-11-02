@@ -3,8 +3,7 @@ layout: post
 title: How I built this website
 date: 2026-09-20
 description: >-
-  How I moved my portfolio from a single exported HTML page to a Jekyll site
-  with two post collections, built and previewed on a headless Mac mini.
+  How I moved my portfolio from one exported HTML page to a Jekyll site on GitHub Pages, with posts I write as Markdown files.
 tags: [jekyll, github-pages, ruby, claude-code, homelab]
 number: "002"
 status: Complete
@@ -27,7 +26,7 @@ My Work and Notes sections also weren't written into the HTML. JavaScript genera
 
 ##### How the site is served
 
-Nothing runs on a server. A request makes three stops:
+No code runs on a server here. A request makes three stops:
 
 1. DNS sends abdulzainos.com to Cloudflare, and the bare domain redirects to www.
 2. Cloudflare handles HTTPS, caches pages, and hides my email from scrapers.
@@ -39,11 +38,11 @@ No database, no login, nothing to patch.
 
 I wanted posts as Markdown files in folders, versioned in Git. A static site generator turns those files into HTML at build time.
 
-I looked at Next.js, Hugo, Astro, and Eleventy. Next.js is built for applications, which this isn't. The other three would work, but GitHub Pages only builds Jekyll on its own. The rest need a GitHub Actions workflow. This site isn't mission critical, so I chose the option where pushing is deploying.
+I looked at Next.js, Hugo, Astro, and Eleventy. Next.js is built for applications, which this isn't. The other three would work, but GitHub Pages only builds Jekyll on its own. The rest need a GitHub Actions workflow. This is a small site, so I chose the option where a push is the deploy.
 
 ##### How I designed it
 
-I designed the first version of this site in Claude Design. I asked for something industrial, minimal, and modern, with a precise feel where every element looks intentional. I added light and dark modes to make it easier on the eyes.
+I designed the first version of this site in Claude Design. I asked for an industrial, minimal look. I added light and dark modes to make it easier on the eyes.
 
 I wanted the homepage to focus on three things:
 
@@ -55,9 +54,9 @@ The education section matters most to me, and I haven't seen it on other persona
 
 ##### Two kinds of posts
 
-Working notes are where I recount experiences and lessons learned.
+Working notes are about things I've run into and what I learned.
 
-Project write-ups are sessions of work with an end goal and a clear beginning and end. They record the process and everything the project involved. This post is one.
+Project write-ups cover one piece of work from start to finish. This post is one.
 
 ##### What changed
 
@@ -107,7 +106,7 @@ ssh -L 4000:localhost:4000 user@my-server.local
 ```
 {:.scroll}
 
-Claude Code also ran headless Chrome to render pages and catch visual problems. The Mac mini has no screen, and neither did the browser testing the site.
+Claude Code also used headless Chrome to render pages and catch visual problems, since the Mac mini has no screen.
 
 ##### Workflow
 

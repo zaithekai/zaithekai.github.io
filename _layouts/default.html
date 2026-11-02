@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {%- assign page_title = page.title | default: site.title -%}
 {%- if page.title and page.title != site.title -%}
-  {%- assign full_title = page.title | append: ' — ' | append: site.title -%}
+  {%- assign full_title = page.title | append: ' / ' | append: site.title -%}
 {%- else -%}
-  {%- assign full_title = site.title | append: ' — Cloud and Infrastructure' -%}
+  {%- assign full_title = site.title | append: ' / Cloud and Infrastructure' -%}
 {%- endif -%}
 {%- assign page_description = page.description | default: site.description | strip_newlines | strip -%}
 {%- assign page_url = page.url | absolute_url -%}
@@ -40,10 +40,10 @@
 
 <div class="site-header" style="position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid rgba(var(--ink-rgb),.28)">
 <div style="max-width:1140px;margin:0 auto;padding:13px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase">
-<a href="{{ '/' | relative_url }}" style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:var(--accent);display:block;flex:none"></span><span>ABDUL ZAINOS — CLOUD / INFRASTRUCTURE</span></a>
+<a href="{{ '/' | relative_url }}" style="display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:var(--accent);display:block;flex:none"></span><span>ABDUL ZAINOS / CLOUD AND INFRASTRUCTURE</span></a>
 <div style="display:flex;align-items:center;gap:26px">
-<a href="{{ '/' | relative_url }}" data-nav="index"{% if page.nav == 'index' %} class="is-active"{% endif %}>Index</a>
-<a href="{{ '/projects/' | relative_url }}" data-nav="work"{% if page.nav == 'work' %} class="is-active"{% endif %}>Work</a>
+<a href="{{ '/' | relative_url }}" data-nav="index"{% if page.nav == 'index' %} class="is-active"{% endif %}>Home</a>
+<a href="{{ '/projects/' | relative_url }}" data-nav="work"{% if page.nav == 'work' %} class="is-active"{% endif %}>Projects</a>
 <a href="{{ '/notes/' | relative_url }}" data-nav="notes"{% if page.nav == 'notes' %} class="is-active"{% endif %}>Notes</a>
 <a href="{{ '/contact/' | relative_url }}" data-nav="contact"{% if page.nav == 'contact' %} class="is-active"{% endif %}>Contact</a>
 </div>

@@ -1,9 +1,7 @@
 title: Abdul Zainos
 url: https://www.abdulzainos.com
 description: >-
-  Portfolio and working notes of Abdul Zainos, a cloud and network engineering
-  student on the AWS and Linux track — labs, project write-ups, and short
-  posts about things that broke the first time.
+  Portfolio of Abdul Zainos, a cloud and network engineering student on the AWS track. Home lab projects, write-ups, and working notes.
 author: Abdul Zainos
 lang: en
 
@@ -29,7 +27,7 @@ defaults:
       type: project_notes
     values:
       layout: post
-      collection_label: Work
+      collection_label: Projects
       collection_url: /projects/
       nav: work
 
