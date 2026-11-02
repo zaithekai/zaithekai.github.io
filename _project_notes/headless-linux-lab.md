@@ -3,7 +3,7 @@ layout: post
 title: Headless Linux lab
 date: 2026-09-10
 description: >-
-  A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. Administered entirely over SSH, so nothing resets when I close the tab.
+  Three Ubuntu VMs on a Mac mini with no monitor, created with Multipass and managed over SSH. I built it because my course's browser labs erased my work every 30 minutes.
 tags: [linux, multipass, ssh, homelab]
 number: "001"
 status: Ongoing
@@ -18,20 +18,20 @@ spec:
 
 ##### The problem
 
-I'm working through the LPI Linux Essentials material, and the browser labs it ships with expire after 30 minutes. Everything I did was gone when the timer ran out. Fine for a single exercise, useless for anything I wanted to build on. I wanted an environment that stuck around, and one I could break on purpose without losing my work.
+The browser labs in my LPI Linux Essentials course expired after 30 minutes, and everything I'd done went with them. That worked for a single exercise, but I couldn't build on anything. I wanted a lab that kept its state and that I could break on purpose without losing my work.
 
 ##### What I built
 
-A Mac mini running headless as a virtualization host, with Ubuntu instances I provision through Multipass. I administer all of it over SSH from my iMac. No monitor on the host, no desktop on the guests.
+I run a Mac mini with no monitor as a virtualization host. Multipass creates the Ubuntu VMs, and I manage everything over SSH from my iMac.
 
-1. The host runs with no display attached. I reach it over the network or not at all.
-2. I create and destroy Ubuntu VMs through Multipass, so breaking one costs me a rebuild instead of an afternoon.
-3. Key-based SSH with password authentication disabled, so a guessable password is not a way into the host.
+1. The host has no display, so all access is over the network.
+2. I create and delete VMs with Multipass. Breaking one costs me a rebuild instead of an afternoon.
+3. SSH uses keys only. Password login is off, so nobody gets in by guessing a password.
 
 ##### What I learned
 
-Most of the coursework has been command line: finding my way around the filesystem, archiving and compression with tar, shell scripting. Having a machine that keeps its state changed how I study. I can leave something half-configured, come back to it later, and pick up where I stopped. And when I break something badly enough that fixing it isn't worth the time, I delete the instance and launch a new one.
+Most of the coursework was command line: moving around the filesystem, archiving and compressing with tar, and shell scripting. A lab that keeps its state changed how I study. I can leave something half configured and pick it up later. When I break something badly enough that a fix isn't worth the time, I delete the instance and launch a new one.
 
 ##### What's next
 
-Finishing the shell scripting section, then moving my development work onto this machine and using it as the environment I actually build in, with deployment running from GitHub out to AWS.
+I earned Linux Essentials in September 2026, and this site now builds on the same machine. Next I'm setting up deployment from GitHub to AWS.

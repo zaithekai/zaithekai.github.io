@@ -24,7 +24,7 @@ The degree is a Bachelor of Science in Cloud and Network Engineering from Wester
 
 ## How I got here
 
-My first job in tech was Tier 3 support for AT&T. After that I worked help desk at an IT company in Sparks, and before long I was building websites. That turned into Xaicode, the web development business I ran for about eight years.
+My first job in tech was Tier 3 support for AT&T. After that I worked help desk, and before long I was building websites. That turned into Xaicode, the web development business I ran for about eight years.
 
 At Xaicode I managed developers in different countries and moved whole online stores from one platform to another. The part I liked most was the work behind the scenes. Some clients had sites with heavy traffic, and I had to figure out how to keep them fast and online. I taught myself servers through a lot of late nights, long before AI tools could help. Eventually I ran my own server to host sites for smaller clients.
 
@@ -46,14 +46,14 @@ Amazon Web Services (AWS) is one of the biggest of those providers. A lot of the
 
 ## What I can do today
 
-I wired my own house. I ran network cable through the walls to a closet and set up the equipment that connects everything. I also run a small Linux lab at home. Linux is the operating system most servers run on, so that's where I practice what I learn in class.
+I wired a house I lived in. I ran network cable through the walls to a closet and set up the equipment that connects everything. I also run a small Linux lab at home. Linux is the operating system most servers run on, so that's where I practice what I learn in class.
 
 Here's where my certifications stand:
 
 - **ITIL 4 Foundation (2026):** How IT teams organize their work so problems get fixed the same way every time.
 - **LPI Linux Essentials (2026):** Proof that I know my way around Linux.
 - **CompTIA A+:** The standard entry-level IT certification. I passed the Core 2 exam (220-1202).
-- **CompTIA Network+:** Next on the list.
+- **CompTIA Network+:** I'm studying for it now.
 
 ## Where I'm headed
 
@@ -74,11 +74,11 @@ Online school is flexible, but it doesn't come with a network. No career fairs, 
 
 ### Is this coding?
 
-Some. I write scripts to automate tasks and set up systems. I don't build apps. Most of my time goes to setting systems up and fixing them when they break.
+Some. I'm learning scripting to automate tasks and set up systems. I don't build apps. Most of my time goes to setting systems up and fixing them when they break.
 
 ### Why go back to school?
 
-I've spent years in tech, mostly on the business and project side. I learned a lot on my own, but a lot of the jobs I want ask for a degree and certifications. Soon I'll have both.
+I've spent years in tech, mostly on the business and project side. I learned a lot on my own, but a lot of the jobs I want ask for a degree and certifications. I'm working on both.
 
 ### Is WGU a real school?
 
